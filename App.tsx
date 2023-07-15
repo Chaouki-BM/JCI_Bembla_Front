@@ -6,6 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import FerstPage from './screens/FerstPage';
 import LoginPage from './screens/LoginPage';
 import AddRestInformationPage from './screens/AddRestInformationPage';
+import Progress from './screens/Progress';
+import NavBar from './components/NavBar';
+import ForgetPassword from './screens/ForgetPassword';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
@@ -20,10 +23,9 @@ const App = () => {
           }}>
           <Stack.Screen name="FerstPage" component={FerstPage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
-          <Stack.Screen
-            name="AddRestInformationPage"
-            component={AddRestInformationPage}
-          />
+          <Stack.Screen name="HomePage" component={NavBar} />
+          <Stack.Screen name="Progress" component={Progress} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

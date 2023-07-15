@@ -36,12 +36,14 @@ const LoginPage = ({ navigation }) => {
   //     console.log(e);
   //   }
   // };
-  const forgetPassword = () => {};
+  const forgetPassword = () => {
+    navigation.navigate('ForgetPassword');
+  };
   const [DataUser, setDataUser] = useState({ email: '', password: '' });
   const handelLogin = async () => {
     try {
       await AsyncStorage.mergeItem('DataUser', JSON.stringify(DataUser));
-      navigation.replace('AddRestInformationPage');
+      navigation.replace('HomePage');
     } catch (e) {
       console.log(e);
     }

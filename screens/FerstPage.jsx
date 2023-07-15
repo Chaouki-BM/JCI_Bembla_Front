@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React from 'react';
 import IcSimpleLineIconson from 'react-native-vector-icons/SimpleLineIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const { height, width } = Dimensions.get('window');
@@ -18,10 +18,14 @@ const FerstPage = ({ navigation }) => {
       AsyncStorage.getItem('DataUser').then(Value => {
         let user = JSON.parse(Value);
         console.log('valuser', user);
-        if (user.email === '' || user.password === '') {
-          navigation.navigate('LoginPage');
+        if (Value != null) {
+          if (user.email === '' || user.password === '') {
+            navigation.navigate('LoginPage');
+          } else {
+            navigation.navigate('HomePage');
+          }
         } else {
-          navigation.navigate('AddRestInformationPage');
+          navigation.navigate('LoginPage');
         }
       });
     } catch (e) {
