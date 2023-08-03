@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const { height, width } = Dimensions.get('window');
 const Event = ({ navigation }) => {
   const handelshowstat = () => {
@@ -65,7 +66,7 @@ const Event = ({ navigation }) => {
                     flexDirection: 'row-reverse',
                     marginHorizontal: width * 0.05,
                   }}>
-                  <AntDesign name="piechart" size={30} />
+                  <FontAwesome5 name="tasks" size={30} />
                   <Text
                     style={{
                       marginHorizontal: width * 0.05,
