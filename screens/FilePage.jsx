@@ -9,10 +9,13 @@ import {
   TextInput,
 } from 'react-native';
 import React from 'react';
+
 const { height, width } = Dimensions.get('window');
 
-const FilePage = () => {
-  const HandelNavToListOfTrainers = () => {};
+const FilePage = ({ navigation }) => {
+  const HandelNavToListOfTrainers = () => {
+    navigation.navigate('ListOfTrainersPage');
+  };
   const HandelNavToListOfSponsors = () => {};
   const HandelNavToListOfMembers = () => {};
   const HandelNavToBudget = () => {};

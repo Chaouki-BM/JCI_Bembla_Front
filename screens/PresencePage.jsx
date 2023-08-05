@@ -107,13 +107,17 @@ const PresencePage = () => {
       <TouchableOpacity
         style={{
           position: 'absolute',
-          alignSelf: 'flex-end',
           marginVertical: height / 1.25,
+          alignSelf: 'flex-end',
+          // justifyContent: 'flex-end',
+          // width: width,
+          // height: height - height / 6,
         }}>
         <Entypo
           name="add-to-list"
           size={26}
-          style={{ padding: width * 0.05 }}
+          color="black"
+          style={{ marginHorizontal: width * 0.05 }}
         />
       </TouchableOpacity>
     </ImageBackground>
