@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import React from 'react';
 const { height, width } = Dimensions.get('window');
-
-const AddRestInformationPage = () => {
+const ChangePassword = () => {
   return (
     <ImageBackground
       source={require('../assets/backgroundSecondPage.png')}
@@ -27,11 +26,11 @@ const AddRestInformationPage = () => {
         }}
         source={require('../assets/logo.png')}
       />
-      <Text>Add rest information</Text>
+      <Text>ChangePassword</Text>
     </ImageBackground>
   );
 };
 
-export default AddRestInformationPage;
+export default ChangePassword;
 
 const styles = StyleSheet.create({});
