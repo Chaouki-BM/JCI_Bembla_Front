@@ -8,10 +8,13 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import jwt_decode from 'jwt-decode';
 import React, { useEffect, useState } from 'react';
 const { height, width } = Dimensions.get('window');
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import store from '../components/Store';
+import Client from '../Api/Client';
 const LoginPage = ({ navigation }) => {
   // useEffect(() => {
   //   getData();
@@ -39,13 +42,35 @@ const LoginPage = ({ navigation }) => {
   const forgetPassword = () => {
     navigation.navigate('ForgetPassword');
   };
-  const [DataUser, setDataUser] = useState({ email: '', password: '' });
+  const [datauser, setdatauser] = store.useState('datauser');
+  const [DataUser, setDataUser] = useState({
+    Email: '',
+    Password: '',
+    role: '',
+  });
   const handelLogin = async () => {
-    try {
-      await AsyncStorage.mergeItem('DataUser', JSON.stringify(DataUser));
-      navigation.replace('HomePage');
-    } catch (e) {
-      console.log(e);
+    let go = false;
+    await Client.post('/user/login', DataUser)
+      .then(function (res) {
+        console.log(res.data.token);
+        decoded = jwt_decode(res.data.token);
+        datauser.email = decoded.Email;
+        datauser.role = decoded.role;
+        datauser.fullname = decoded.FullName;
+        DataUser.role = decoded.role;
+        go = true;
+        console.log('datauser', datauser);
+      })
+      .catch(function (e) {
+        console.log('error from login', e);
+      });
+    if (go) {
+      try {
+        await AsyncStorage.mergeItem('DataUser', JSON.stringify(DataUser));
+        navigation.replace('HomePage');
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
   return (
@@ -134,8 +159,8 @@ const LoginPage = ({ navigation }) => {
             placeholder="البريد الالكتروني"
             placeholderTextColor={'#D3D3D3'}
             //#C0C0C0
-            value={DataUser.email}
-            onChangeText={val => setDataUser({ ...DataUser, email: val })}
+            value={DataUser.Email}
+            onChangeText={val => setDataUser({ ...DataUser, Email: val })}
           />
           <Text
             style={{
@@ -157,8 +182,8 @@ const LoginPage = ({ navigation }) => {
             }}
             placeholder="كلمة السر"
             placeholderTextColor={'#D3D3D3'}
-            value={DataUser.password}
-            onChangeText={val => setDataUser({ ...DataUser, password: val })}
+            value={DataUser.Password}
+            onChangeText={val => setDataUser({ ...DataUser, Password: val })}
           />
           <TouchableOpacity onPress={forgetPassword}>
             <Text
