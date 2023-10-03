@@ -46,27 +46,24 @@ const LoginPage = ({ navigation }) => {
   const [DataUser, setDataUser] = useState({
     Email: '',
     Password: '',
-    role: '',
   });
   const handelLogin = async () => {
     let go = false;
     await Client.post('/user/login', DataUser)
       .then(function (res) {
-        console.log(res.data.token);
         decoded = jwt_decode(res.data.token);
         datauser.email = decoded.Email;
         datauser.role = decoded.role;
         datauser.fullname = decoded.FullName;
-        DataUser.role = decoded.role;
         go = true;
-        console.log('datauser', datauser);
       })
       .catch(function (e) {
         console.log('error from login', e);
       });
+
     if (go) {
       try {
-        await AsyncStorage.mergeItem('DataUser', JSON.stringify(DataUser));
+        await AsyncStorage.mergeItem('DataUser', JSON.stringify(datauser));
         navigation.replace('HomePage');
       } catch (e) {
         console.log(e);

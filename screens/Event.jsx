@@ -9,13 +9,35 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import store from '../components/Store';
+import React, { useEffect } from 'react';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const { height, width } = Dimensions.get('window');
 const Event = ({ navigation }) => {
+  let value;
+  const [datauser, setdatauser] = store.useState('datauser');
+  useEffect(() => {
+    getdata();
+  }, []);
+  const getdata = () => {
+    try {
+      AsyncStorage.getItem('DataUser').then(Value => {
+        let data = JSON.parse(Value);
+        datauser.email = data.email;
+        datauser.fullname = data.fullname;
+        datauser.role = data.role;
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const handelshowstat = () => {
     navigation.navigate('Progress');
+    console.log('datauser26', datauser);
   };
   return (
     <ImageBackground
