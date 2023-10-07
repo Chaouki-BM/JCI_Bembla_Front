@@ -17,7 +17,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const { height, width } = Dimensions.get('window');
 const Event = ({ navigation }) => {
-  let value;
   const [datauser, setdatauser] = store.useState('datauser');
   useEffect(() => {
     getdata();

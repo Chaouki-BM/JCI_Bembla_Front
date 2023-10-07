@@ -8,11 +8,13 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import store from '../components/Store';
 
 const { height, width } = Dimensions.get('window');
-
+//console.log('file', datauser);
 const FilePage = ({ navigation }) => {
+  const [datauser, setdatauser] = store.useState('datauser');
   const HandelNavToListOfTrainers = () => {
     navigation.navigate('ListOfTrainersPage');
   };
@@ -153,12 +155,54 @@ const FilePage = ({ navigation }) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
+            {datauser.role == 'vpfd' ? (
+              <>
+                <Text
+                  style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
+                  إضافة تدريب
+                </Text>
+                <Text
+                  style={{ color: 'black', fontSize: 13, fontWeight: '300' }}>
+                  number
+                </Text>
+              </>
+            ) : (
+              <></>
+            )}
+            {datauser?.role == 'vppre' ? (
+              <>
+                <Text
+                  style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
+                  إضافة حدث
+                </Text>
+                <Text
+                  style={{ color: 'black', fontSize: 13, fontWeight: '300' }}>
+                  number
+                </Text>
+              </>
+            ) : (
+              <></>
+            )}
+            {datauser.role == 'president' ? (
+              <>
+                <Text
+                  style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
+                  إضافة أعضاء
+                </Text>
+                <Text
+                  style={{ color: 'black', fontSize: 13, fontWeight: '300' }}>
+                  number
+                </Text>
+              </>
+            ) : (
+              <></>
+            )}
+            {/* <Text style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
               إضافة أعضاء
             </Text>
             <Text style={{ color: 'black', fontSize: 13, fontWeight: '300' }}>
               number
-            </Text>
+            </Text> */}
           </View>
         </TouchableOpacity>
       </View>
