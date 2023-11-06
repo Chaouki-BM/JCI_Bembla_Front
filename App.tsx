@@ -11,6 +11,7 @@ import NavBar from './components/NavBar';
 import ForgetPassword from './screens/ForgetPassword';
 import ListOfTrainersPage from './screens/ListOfTrainersPage';
 import ChangePassword from './screens/ChangePassword';
+import AddMembre from './screens/AddMembre';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
             component={AddRestInformationPage}
           />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
+          <Stack.Screen name="AddMembre" component={AddMembre} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

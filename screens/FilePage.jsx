@@ -21,7 +21,9 @@ const FilePage = ({ navigation }) => {
   const HandelNavToListOfSponsors = () => {};
   const HandelNavToListOfMembers = () => {};
   const HandelNavToBudget = () => {};
-  const HandelNavToAddMembers = () => {};
+  const HandelNavToAddMembers = () => {
+    navigation.navigate('AddMembre');
+  };
   return (
     <ImageBackground
       source={require('../assets/backgroundSecondPage.png')}
@@ -155,7 +157,7 @@ const FilePage = ({ navigation }) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            {datauser.role == 'vpfd' ? (
+            {datauser?.role == 'vpfd' ? (
               <>
                 <Text
                   style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>
@@ -176,14 +178,18 @@ const FilePage = ({ navigation }) => {
                   إضافة حدث
                 </Text>
                 <Text
-                  style={{ color: 'black', fontSize: 13, fontWeight: '300' }}>
+                  style={{
+                    color: 'black',
+                    fontSize: 13,
+                    fontWeight: '300',
+                  }}>
                   number
                 </Text>
               </>
             ) : (
               <></>
             )}
-            {datauser.role == 'president' ? (
+            {datauser?.role == 'president' ? (
               <>
                 <Text
                   style={{ color: 'black', fontSize: 16, fontWeight: '700' }}>

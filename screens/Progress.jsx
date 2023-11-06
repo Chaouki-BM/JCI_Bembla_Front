@@ -12,9 +12,13 @@ import {
 import React from 'react';
 import { ProgressView } from '@react-native-community/progress-view';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Client from '../Api/Client';
+import store from '../components/Store';
 const { height, width } = Dimensions.get('window');
 const Progress = () => {
   const currentOS = Platform.OS;
+  const [Task, setTask] = store.useState('Task');
+  console.log('task progress', Task);
   return (
     <ImageBackground
       source={require('../assets/backgroundSecondPage.png')}
