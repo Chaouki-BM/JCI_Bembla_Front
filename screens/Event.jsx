@@ -47,7 +47,9 @@ const Event = ({ navigation }) => {
       });
   };
   const [Task, setTask] = store.useState('Task');
+  const [eventId, seteventId] = store.useState('eventId');
   const handelshowstat = async eventId => {
+    seteventId(eventId);
     await Client.get(`tasks/${eventId}`)
       .then(function (res) {
         setTask(res.data);
