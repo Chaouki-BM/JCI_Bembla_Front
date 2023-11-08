@@ -42,7 +42,7 @@ const NavBar = () => {
           ),
         }}
       />
-      {datauser.role != 'membre' ? (
+      {datauser?.role != 'membre' ? (
         <Tab.Screen
           name="File"
           component={FilePage}
@@ -60,7 +60,7 @@ const NavBar = () => {
       ) : (
         <></>
       )}
-      {datauser.role != 'membre' ? (
+      {datauser?.role != 'membre' ? (
         <Tab.Screen
           name="Presence"
           component={PresencePage}

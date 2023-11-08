@@ -12,6 +12,7 @@ import ForgetPassword from './screens/ForgetPassword';
 import ListOfTrainersPage from './screens/ListOfTrainersPage';
 import ChangePassword from './screens/ChangePassword';
 import AddMembre from './screens/AddMembre';
+import Commite from './screens/Commite';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
           />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
           <Stack.Screen name="AddMembre" component={AddMembre} />
+          <Stack.Screen name="Commite" component={Commite} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
